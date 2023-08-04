@@ -1,0 +1,34 @@
+<div class="container">
+    <button (mouseenter)="activarPresencia()" (mouseleave)="desactivarPresencia()"
+        [ngClass]="{'presencia-activa': presencia}">
+        Simular Tapete
+    </button>
+    <div class="grafico-tiempos">
+        <div class="pilas-tiempos">
+            <!-- Primera pila -->
+            <div class="pila">
+                <h3 class="hora">Última hora</h3>
+                <div *ngFor="let bloque of primeraPila; let i = index" class="bloque"
+                    [ngClass]="{'bloque-negro': !bloque, 'bloque-verde': bloque}"></div>
+            </div>
+            <!-- Segunda pila -->
+            <div class="pila">
+                <h3 class="hora">Últimas 8 horas</h3>
+                <div *ngFor="let bloque of segundaPila; let i = index" class="bloque"
+                    [ngClass]="{'bloque-negro': !bloque, 'bloque-verde': bloque}"></div>
+            </div>
+        </div>
+        <!-- Alertas y Notificaciones -->
+        <div class="alertas-notificaciones">
+            <div *ngIf="tiempoExcedido" class="alerta">
+                <p>¡Alerta! el empleado abandona su zona de trabajo.</p>
+                <p>Nombre: {{ personaExcedida.nombre }}</p>
+                <p>Tiempo de permanencia: {{ personaExcedida.tiempo }} minutos</p>
+                <div class="tiempo-fuera" *ngIf="tiempoFuera > 0">
+                    Tiempo Fuera: {{ tiempoFuera }} minutos
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

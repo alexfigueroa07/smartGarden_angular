@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <!--     <ng-container *ngIf="isLoggedIn">
+ -->
+    <nav>
+      <div class="logo">
+        <img src="assets/imagesplantas/logoicon.png" alt="Logo">
+      </div>
+      <ul class="menu">
+        <li><a routerLink="/home">INICIO</a></li>
+        <li><a routerLink="/misplantas">IOT ACCESS</a></li>
+        <li><a routerLink="/mihuerto">MI HUERTO</a></li>
+        <li><a routerLink="/miproyecto">TAPETE</a></li>
+      </ul>
+      <div class="login">
+        <a routerLink="/miperfil">PERFIL</a>
+        <ul class="submenu">
+          <li><a routerLink="/miperfil">Ver perfil</a></li>
+          <li><a routerLink="/logout">Logout</a></li>
+
+        </ul>
+      </div>
+    </nav>
+    <!--     </ng-container>
+ -->
+
+  </header>
+  <div class="componentes">
+    <router-outlet></router-outlet>
+  </div>
+</body>
+
+</html>

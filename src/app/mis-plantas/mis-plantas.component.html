@@ -1,0 +1,63 @@
+<div class="login-container">
+    <div class="login-card">
+        <div class="form-section">
+            <!-- <button class="btn-ingresar">Cargar Datos</button> -->
+            <!--             <button (click)="cargarUsuarioEnFormulario(0)">Usuario 1</button>
+ --><button class="btn-ingresar" (click)="cargarUsuarioEnFormulario(0)" [disabled]="loadingUsuarios">Cargar
+                Usuario</button>
+
+            <h2 class="tit">Iniciar sesión</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" required>
+                </div>
+                <div class="form-group">
+                    <label for="cargo">Area // Carrera:</label>
+                    <input type="text" id="area" name="area" [(ngModel)]="area" required>
+                </div>
+                <div class="form-group">
+                    <label for="horaChecada">Hora de checada</label>
+                    <input type="text" id="checkin" name="checkin" [(ngModel)]="checkin" required>
+                </div>
+                <div class="form-group">
+                    <label for="horaSalida">Hora de salida</label>
+                    <input type="text" id="checkout" name="checkout" [(ngModel)]="checkout" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha</label>
+                    <input type="text" id="fecha" name="fecha" [(ngModel)]="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="temperatura">Temperatura (C)</label>
+                    <input type="number" id="temperatura" name="temperatura" [(ngModel)]="temperatura" required>
+                </div>
+                <p>Riesgo:</p>
+                <div class="temperatura-riesgo">
+                    <div *ngIf="temperatura === 0" class="riesgo-iconos">
+                        <span class="nada"></span>
+                    </div>
+                    <div *ngIf="temperatura > 35" class="riesgo-iconos">
+                        <span class="icono-alto">ALTO</span>
+                    </div>
+                    <div *ngIf="temperatura >= 20 && temperatura <= 35" class="riesgo-iconos">
+                        <span class="icono-medio">MEDIO</span>
+                    </div>
+                    <div *ngIf="temperatura < 20 && temperatura > 0" class="riesgo-iconos">
+                        <span class="icono-bajo">BAJO</span>
+                    </div>
+                </div>
+                <button class="btn-ingresar" type="submit">Ingresar</button>
+            </form>
+
+        </div>
+        <div class="profile-section">
+            <!-- Aquí puedes colocar la imagen de perfil -->
+            <img class="perfilimg" src="assets/imagesplantas/henry.jpeg" alt="Imagen de perfil">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<h1>HUERTO </h1>
+<h2>UNIVERSIDAD TECNOLOGICA DE AGUASCALIENTES</h2>
+<h3>MIS PLANTAS</h3>
+<div *ngFor="let planta of plantas; let i = index" class="plant-block">
+    <img class="plant-image" src="{{ planta.imgplanta }}" alt="Imagen de planta">
+    <div class="plant-info">
+        <h3>PLANTA {{ i + 1 }} {{ planta.nombre }}</h3>
+        <p>Planta: {{ planta.nombre }}</p>
+        <p>Temperatura: {{ planta.temperatura }}°C</p>
+        <p>Humedad: {{ planta.humedad }}%</p>
+        <p>Radiación solar: {{ planta.radiacionsolar }}°C</p>
+        <p>Último riego: {{ planta.ultimoriego }}</p>
+        <ng-container *ngIf="planta.temperatura < 20 && planta.humedad < 20; else riesgoBajo">
+            <p>RIESGO: ALTO</p>
+            <button class="btn-naturaleza-red" style="background-color: red;">REGAR</button>
+        </ng-container>
+        <ng-template #riesgoBajo>
+            <p>RIESGO: BAJO</p>
+            <button class="btn-naturaleza-green" style="background-color: green;">OK</button>
+        </ng-template>
+    </div>
+</div>

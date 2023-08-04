@@ -1,0 +1,115 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    color: #f1f1f1;
+
+}
+
+.login-card {
+    display: flex;
+    width: 800px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-image: url("../../assets/imagesplantas/fondoform.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form-section {
+    flex: 1;
+    padding: 20px;
+
+}
+
+.profile-section {
+    flex: 1;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../assets/imagesplantas/fondoform.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.temperatura-riesgo {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.riesgo-iconos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.icono-alto,
+.icono-medio,
+.icono-bajo,
+.nada {
+    display: block;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+    width: 100%;
+    height: 60px;
+
+}
+
+.nada {
+    background-color: gray;
+}
+
+.icono-alto {
+    background-color: red;
+}
+
+.icono-medio {
+    background-color: orange;
+}
+
+.icono-bajo {
+    background-color: green;
+}
+
+.btn-ingresar {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.perfilimg {
+    width: 60%;
+    border-radius: 10%;
+}

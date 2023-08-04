@@ -1,0 +1,20 @@
+<p>api works! yuju</p>
+<p>Respuesta de la API: {{ respuestaAPI }}</p>
+<p>Respuesta de la API: {{ respuestaAPI | json }}</p>
+
+
+
+<!-- Formulario para agregar nuevo carro -->
+<form (submit)="agregarCarro()">
+    <label>
+        Nuevo Carro:
+        <input type="text" [(ngModel)]="nuevoCarro" name="nuevoCarro">
+    </label>
+    <button type="submit">Agregar</button>
+</form>
+
+<!-- Botón para consultar y mostrar el arreglo ordenado -->
+<button (click)="consultarArreglo()">Consultar Arreglo</button>
+
+<!-- Respuesta de la API -->
+<p>Respuesta de la API: {{ respuestaAPI?.mensaje }}</p>

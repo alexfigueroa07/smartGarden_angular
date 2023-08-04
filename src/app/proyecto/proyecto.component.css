@@ -1,0 +1,77 @@
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para el botón de simulación de tapete */
+button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: 3px solid #333;
+    background-color: #666;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #888;
+}
+
+button.presencia-activa {
+    background-color: #444;
+}
+
+/* Estilos para las pilas de tiempos */
+.grafico-tiempos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.pilas-tiempos {
+    display: flex;
+    gap: 20px;
+}
+
+.pila {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.hora {
+    font-size: 18px;
+}
+
+.bloque {
+    width: 40px;
+    height: 10px;
+    border: 1px solid #333;
+}
+
+.bloque-negro {
+    background-color: #333;
+}
+
+.bloque-verde {
+    background-color: #0f0;
+}
+
+/* Estilos para las alertas y notificaciones */
+.alertas-notificaciones {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.alerta {
+    padding: 10px;
+    background-color: #ff3333;
+    color: #fff;
+    border-radius: 5px;
+}
