@@ -6,11 +6,21 @@
     <div class="grafico-tiempos">
         <div class="pilas-tiempos">
             <!-- Primera pila -->
-            <div class="pila">
-                <h3 class="hora">Última hora</h3>
-                <div *ngFor="let bloque of primeraPila; let i = index" class="bloque"
-                    [ngClass]="{'bloque-negro': !bloque, 'bloque-verde': bloque}"></div>
-            </div>
+            <ng-container *ngIf="presencia; else pilaFuera">
+                <div class="pila">
+                    <h3 class="hora">Última hora</h3>
+                    <div *ngFor="let bloque of primeraPila; let i = index" class="bloque"
+                        [ngClass]="{'bloque-negro': !bloque, 'bloque-verde': bloque}"></div>
+                </div>
+            </ng-container>
+            <ng-template #pilaFuera>
+                <div class="pila">
+                    <h3 class="hora">Última hora (fuera del tapete)</h3>
+                    <div *ngFor="let bloque of estadoPrimeraPilaFuera; let i = index" class="bloque"
+                        [ngClass]="{'bloque-negro': !bloque, 'bloque-verde': bloque}"></div>
+                </div>
+            </ng-template>
+
             <!-- Segunda pila -->
             <div class="pila">
                 <h3 class="hora">Últimas 8 horas</h3>
@@ -18,6 +28,7 @@
                     [ngClass]="{'bloque-negro': !bloque, 'bloque-verde': bloque}"></div>
             </div>
         </div>
+
         <!-- Alertas y Notificaciones -->
         <div class="alertas-notificaciones">
             <div *ngIf="tiempoExcedido" class="alerta">
@@ -26,9 +37,9 @@
                 <p>Tiempo de permanencia: {{ personaExcedida.tiempo }} minutos</p>
                 <div class="tiempo-fuera" *ngIf="tiempoFuera > 0">
                     Tiempo Fuera: {{ tiempoFuera }} minutos
+                    Tiempo Fuera TOTAL: {{ contadorTiempoFuera }} minutos
                 </div>
             </div>
         </div>
-
     </div>
 </div>

@@ -20,3 +20,19 @@
         </ng-template>
     </div>
 </div>
+<h3>ALUMNOS</h3>
+<!-- Bloque de Alumnos y Materias -->
+<h3>ALUMNOS</h3>
+<div *ngFor="let alumno of alumnos; let i = index" class="alumno-block">
+    <h3>ALUMNO {{ i + 1 }} {{ alumno.nombre }} {{ alumno.apellido }}</h3>
+    <p>Edad: {{ alumno.edad }}</p>
+    <p>Carrera: {{ alumno.carrera }}</p>
+    <p>Grupo: {{ alumno.grupo }}</p>
+
+    <!-- Materias del Alumno -->
+    <div *ngFor="let materia of alumno.materias" class="materia-block">
+        <h4>Materia: {{ materia.nombre }}</h4>
+        <p>Calificación: {{ materia.calificacion }}</p>
+        <p>Faltas: {{ materia.faltas }}</p>
+    </div>
+</div>

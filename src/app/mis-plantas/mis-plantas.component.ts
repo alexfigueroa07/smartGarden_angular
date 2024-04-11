@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./mis-plantas.component.css']
 })
 export class MisPlantasComponent {
+
+  usuarioSeleccionadoIndex: number = -1; // Aqui puse con 0 para que me traiga a la primer persona... este va a cabiar depende a lo que el usuario seleccione
+
+  mostrarListaUsuarios: boolean = false;
+
   loadingUsuarios: boolean = true;
   // Propiedades del componente para almacenar los datos de los usuarios
   usuarios: any[]; // Cambia el tipo de dato según la estructura de tus usuarios
@@ -18,6 +23,8 @@ export class MisPlantasComponent {
   checkin: any;  // Puedes ajustar el tipo de dato según la estructura de Timestamp
   fecha: Date;
   temperatura: number;
+  imgPerfil: string; // Campo para la URL de la imagen de perfil
+
 
   constructor(private http: HttpClient) {
     console.log('Constructor MisPlantasComponent');
@@ -32,6 +39,7 @@ export class MisPlantasComponent {
     this.checkin = null;
     this.fecha = new Date();
     this.temperatura = 0;
+    this.imgPerfil = '';
 
     // Realizar una solicitud GET al servidor Flask para obtener la información del usuario
 
@@ -42,8 +50,7 @@ export class MisPlantasComponent {
 
         this.usuarios = data;
         this.loadingUsuarios = false;
-        // También puedes llenar los campos de entrada del formulario con los datos del primer usuario, si lo deseas
-        this.cargarUsuarioEnFormulario(0); // Cambia el índice según el usuario que deseas mostrar en el formulario
+        this.cargarUsuarioEnFormulario(-1); //
       },
       (error) => {
         console.error('Error al obtener la información de los usuarios: ', error);
@@ -58,39 +65,34 @@ export class MisPlantasComponent {
     console.log('Cargando usuario en formulario:', indice);
 
     const usuarioSeleccionado = this.usuarios[indice];
-    if (usuarioSeleccionado) {
-      this._id = usuarioSeleccionado._id;
-      this.nombre = usuarioSeleccionado.nombre;
-      this.apellido = usuarioSeleccionado.apellido;
-      this.area = usuarioSeleccionado.area;
-      this.checkout = usuarioSeleccionado.checkout;
-      this.checkin = usuarioSeleccionado.checkin;
-      this.fecha = new Date(usuarioSeleccionado.fecha);
-      this.temperatura = usuarioSeleccionado.temperatura;
-      // Agrega aquí las demás propiedades del usuario que deseas mostrar en el formulario
+
+    if (indice >= 0) {
+      const usuarioSeleccionado = this.usuarios[indice];
+      if (usuarioSeleccionado) {
+        this._id = usuarioSeleccionado._id;
+        this.nombre = usuarioSeleccionado.nombre;
+        this.apellido = usuarioSeleccionado.apellido;
+        this.area = usuarioSeleccionado.area;
+        this.checkout = usuarioSeleccionado.checkout;
+        this.checkin = usuarioSeleccionado.checkin;
+        this.fecha = new Date(usuarioSeleccionado.fecha);
+        this.temperatura = usuarioSeleccionado.temperatura;
+        this.imgPerfil = usuarioSeleccionado.imgPerfil;
+        // Agrega aquí las demás propiedades del usuario que deseas mostrar en el formulario
+      }
+    } else {
+      // Deja los campos en blanco si el índice es -1
+      this._id = '';
+      this.nombre = '';
+      this.apellido = '';
+      this.area = '';
+      this.checkout = null;
+      this.checkin = null;
+      this.fecha = new Date();
+      this.temperatura = 0;
+      this.imgPerfil = '';
     }
   }
-
 }
 
-/*   nombre: string;
-  apellido: string;
-  cargo: string;
-  horaChecada: Date;
-  horaSalida: Date;
-  temperatura: number;
-  fecha: Date;
-
-  constructor() {
-    // CAMBIAR ESTO A UN GET A MONGO... 
-    this.nombre = 'HENRY';
-    this.apellido = 'CAVIL';
-    this.cargo = 'LINKTHINKS';
-    this.horaChecada = new Date();
-    this.horaChecada.setHours(8, 30, 0, 0);
-    this.horaSalida = new Date();
-    this.horaSalida.setHours(17, 15, 0, 0);
-    this.temperatura = 0;
-    this.fecha = new Date();
-  } */
 

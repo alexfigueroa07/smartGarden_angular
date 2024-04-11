@@ -14,6 +14,7 @@ client = pymongo.MongoClient(uri)
 db = client.huertoutc
 coleccion_plantas = db.plantas
 coleccion_usuarios = db.users
+coleccion_alumnos = db.alumnos
 
 
 @app.route("/api/plantas", methods=["GET"])
@@ -33,6 +34,25 @@ def obtener_plantas():
         # En caso de error, imprimirlo en la consola
         print("Error al obtener la lista de plantas:", str(e))
         return jsonify({"error": "Ocurrió un error al obtener las plantas"}), 500
+
+
+@app.route("/api/alumnos", methods=["GET"])
+def obtener_alumnos():
+    try:
+        # Agregar mensaje de impresión para verificar que se está obteniendo la lista de plantas
+        print("Obteniendo la lista de alumnos...")
+
+        # Obtiene todas las plantas de la colección
+        alumnos = list(coleccion_alumnos.find({}, {"_id": 0}))  # Excluye el campo _id
+
+        # Agregar mensaje de impresión para verificar que se obtuvo la lista de plantas correctamente
+        print("Lista de alumnos obtenida")
+
+        return jsonify(alumnos)
+    except Exception as e:
+        # En caso de error, imprimirlo en la consola
+        print("Error al obtener la lista de alumnos:", str(e))
+        return jsonify({"error": "Ocurrió un error al obtener alumnos"}), 500
 
 
 @app.route("/api/usuarios", methods=["GET"])

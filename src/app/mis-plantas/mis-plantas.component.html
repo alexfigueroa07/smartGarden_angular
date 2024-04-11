@@ -1,17 +1,25 @@
 <div class="login-container">
     <div class="login-card">
         <div class="form-section">
-            <!-- <button class="btn-ingresar">Cargar Datos</button> -->
-            <!--             <button (click)="cargarUsuarioEnFormulario(0)">Usuario 1</button>
- --><button class="btn-ingresar" (click)="cargarUsuarioEnFormulario(0)" [disabled]="loadingUsuarios">Cargar
-                Usuario</button>
+            <button class="btn-ingresar" (click)="cargarUsuarioEnFormulario(0)" [disabled]="loadingUsuarios">
+                Cargar Usuario
+            </button>
+
+            <select [(ngModel)]="usuarioSeleccionadoIndex"
+                (change)="cargarUsuarioEnFormulario(usuarioSeleccionadoIndex)">
+                <option value="-1">Selecciona un usuario</option>
+                <option *ngFor="let usuario of usuarios; let i = index" [value]="i">{{ i + 1 }}</option>
+            </select>
+
+
 
             <h2 class="tit">Iniciar sesión</h2>
             <form>
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+                <div class="comentarios">
+                    <label for="nombre">INGRESA TU RESENA:</label>
+                    <input type="text" id="resena" name="resena" required>
                 </div>
+            </form>
                 <div class="form-group">
                     <label for="apellido">Apellido</label>
                     <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" required>
@@ -51,13 +59,16 @@
                         <span class="icono-bajo">BAJO</span>
                     </div>
                 </div>
-                <button class="btn-ingresar" type="submit">Ingresar</button>
+
             </form>
 
         </div>
+
         <div class="profile-section">
-            <!-- Aquí puedes colocar la imagen de perfil -->
-            <img class="perfilimg" src="assets/imagesplantas/henry.jpeg" alt="Imagen de perfil">
+            <!-- Aquí muestras la imagen de perfil -->
+            <img class="perfilimg" [src]="usuarios[usuarioSeleccionadoIndex]?.imgperfil" alt="Imagen de perfil">
         </div>
+
     </div>
+
 </div>
